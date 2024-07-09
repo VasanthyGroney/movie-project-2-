@@ -1,9 +1,9 @@
 import json
 from random import choice
 from matplotlib import pyplot as plt
+import os
 
-FILE_PATH = 'movies.json'
-
+FILE_PATH = 'data.json'
 
 def get_movies():
     """
@@ -20,7 +20,6 @@ def get_movies():
     except json.JSONDecodeError:
         return {"movies": []}
 
-
 def save_movies(data):
     """
     Save movies data to the JSON file.
@@ -30,7 +29,6 @@ def save_movies(data):
     """
     with open(FILE_PATH, 'w') as file:
         json.dump(data, file, indent=4)
-
 
 def add_movie(title, year, rating):
     """
@@ -66,7 +64,6 @@ def add_movie(title, year, rating):
     else:
         print(f'Movie "{title}" already exists.')
 
-
 def delete_movie(title):
     """
     Delete a movie from the JSON file.
@@ -80,7 +77,6 @@ def delete_movie(title):
     data["movies"] = movies
     save_movies(data)
     print(f'Movie "{title}" is successfully deleted.')
-
 
 def update_movie(title, rating):
     """
